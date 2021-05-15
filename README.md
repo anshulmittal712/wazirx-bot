@@ -10,7 +10,7 @@ Bot instructions:
 You can first try the bot out [here.](t.me/WazirxAdvancedBot)
 
 To create your own bot using this code:
-- Create a bot on telegram's botFather
+- Create a bot using [Telegram's BotFather](https://core.telegram.org/bots#6-botfather)
 - Use the token received from the above step in your .env file
 - Update `data.py` to add more coins and their aliases.
 - Run `script.py`
