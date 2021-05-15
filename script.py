@@ -13,13 +13,16 @@ class TelegramBot:
     CURRENCY = "INR"
 
     def __init__(self):
+        if not self.TOKEN:
+            raise Exception("Token Missing! You need to add it to your env var.")
+        # TODO: Handle incorrect token
         self.bot = telebot.TeleBot(self.TOKEN, parse_mode=None)
-        self.register_actions()
+        self._register_actions()
 
     def start_polling(self):
         self.bot.polling()
 
-    def register_actions(self):
+    def _register_actions(self):
 
         @self.bot.message_handler(commands=['start', 'help'])
         def send_welcome(message):
@@ -60,4 +63,8 @@ def initiate_bot():
 
 
 if __name__ == "__main__":
-    initiate_bot()
+    try:
+        initiate_bot()
+    except Exception as e:
+        print("Something went wrong. Details follow:\n", e)
+        print("Terminating..")
